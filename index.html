@@ -13,6 +13,12 @@ canvas {
     border: none;
 }
 
+#showButton {
+height:100%;
+width:100%;
+  min-width: 100%; 
+  min-height: 100%;
+}
 
 #canvasOutput {
   position: fixed;
@@ -31,19 +37,28 @@ canvas {
   z-index:100;
 }
 
+#video {
+    display:none;
+}
+
 </style>
 </head>
 <body>
   <!--  <button id="showButton" onclick="ShowButton()"> -->
 <div id="contentarea">
+  <button id="showButton" onclick="ShowButton()">
 	    <video id="video" autoplay="true" playsinline="true" muted="true">Your browser does not support the video tag.</video>
+
     <canvas id="canvasOutput"></canvas>
 </div>
 </body>
 <script async src="opencv.js" id="opencvjs"></script>
 
 <script>
-
+  function ShowButton(){
+    startup();
+console.log("Showbutton called!");
+  }
 function doStuff(){
 // inputImage are declared and deleted elsewhere
 inputImage = new cv.Mat(height, width, cv.CV_8UC4);
@@ -202,9 +217,6 @@ function playVideo() {
     }
 }
 
-window.onload = function() {
-  startup();
-};
 </script>
 
 </html>
